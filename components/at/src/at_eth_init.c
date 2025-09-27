@@ -26,6 +26,10 @@ bool esp_at_get_eth_default_config(esp_eth_config_t* config)
     esp32_emac_config.smi_gpio.mdio_num = CONFIG_AT_ETH_MDIO_GPIO;
     esp_eth_mac_t *mac = esp_eth_mac_new_esp32(&esp32_emac_config, &mac_config);
 
+    // tt
+    esp_eth_phy_t *phy = esp_eth_phy_new_lan87xx(&phy_config);
+
+/*
 #if CONFIG_PHY_IP101
     esp_eth_phy_t *phy = esp_eth_phy_new_ip101(&phy_config);
 #elif CONFIG_PHY_RTL8201
@@ -35,7 +39,7 @@ bool esp_at_get_eth_default_config(esp_eth_config_t* config)
 #elif CONFIG_PHY_DP83848
     esp_eth_phy_t *phy = esp_eth_phy_new_dp83848(&phy_config);
 #endif
-
+*/
     esp_eth_config_t eth_config = ETH_DEFAULT_CONFIG(mac, phy);
     memcpy(config, &eth_config, sizeof(esp_eth_config_t));
 
